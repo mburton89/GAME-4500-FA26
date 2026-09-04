@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4020752784087427753
+--- !u!1 &8761827756162993604
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1847922944324755323}
-  - component: {fileID: 6913146360932397129}
-  - component: {fileID: 5988745409869442983}
-  - component: {fileID: 2974613700692501695}
-  - component: {fileID: 4361037718213279058}
-  - component: {fileID: -3389415969393203478}
+  - component: {fileID: 6375490065812589839}
+  - component: {fileID: 1942808429212204430}
+  - component: {fileID: 1977331927642251389}
+  - component: {fileID: 5013986007052512004}
+  - component: {fileID: 6300282050487812093}
+  - component: {fileID: 7084584666725638721}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -21,36 +21,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1847922944324755323
+--- !u!4 &6375490065812589839
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4020752784087427753}
+  m_GameObject: {fileID: 8761827756162993604}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.269, y: 1.47614, z: -21.137}
-  m_LocalScale: {x: 0.351875, y: 0.25, z: 0.25}
+  m_LocalPosition: {x: -0.048, y: 0.862, z: 5.228}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6913146360932397129
+--- !u!33 &1942808429212204430
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4020752784087427753}
+  m_GameObject: {fileID: 8761827756162993604}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5988745409869442983
+--- !u!23 &1977331927642251389
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4020752784087427753}
+  m_GameObject: {fileID: 8761827756162993604}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ea5380ac3bca32c4fa6a44f9281bdd33, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,13 +92,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2974613700692501695
+--- !u!135 &5013986007052512004
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4020752784087427753}
+  m_GameObject: {fileID: 8761827756162993604}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -113,13 +113,13 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &4361037718213279058
+--- !u!54 &6300282050487812093
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4020752784087427753}
+  m_GameObject: {fileID: 8761827756162993604}
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
@@ -140,16 +140,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &-3389415969393203478
+--- !u!114 &7084584666725638721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4020752784087427753}
+  m_GameObject: {fileID: 8761827756162993604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3370eeb484292d9419651c724e62e87d, type: 3}
+  m_Script: {fileID: 11500000, guid: f2a2b62a320df874cba30cf2253e07ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   damageToGive: 1
