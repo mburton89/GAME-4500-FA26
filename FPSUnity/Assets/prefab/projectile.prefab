@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5324667171628730396}
   - component: {fileID: 1512890294003710143}
   - component: {fileID: 1088252938842649631}
+  - component: {fileID: 639384294394729420}
   m_Layer: 0
   m_Name: projectile
   m_TagString: Untagged
@@ -139,3 +140,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &639384294394729420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6117926268830426065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9fd28769fc1879428f2373c7d42aadb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  damageToGive: 1
