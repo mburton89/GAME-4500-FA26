@@ -25,7 +25,7 @@ public class Cannon : MonoBehaviour
     void Shoot()
     {
         //OUT SHOOT CODE
-        print("Shoot");
+        //print("Shoot");
 
         //Step 1: Instantiate/Spawn projectile prefab in projectile spawn point
         GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
