@@ -16,7 +16,7 @@ public class Zombie : MonoBehaviour
     public AudioSource takeDamageSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()dddsdw
+    void Start()
     {
         currentHealth = maxHealth;
 
@@ -39,7 +39,7 @@ public class Zombie : MonoBehaviour
     }
 
     public void TakeDamage(float damageToTake)
-    {
+    { 
         currentHealth -= damageToTake;
         takeDamageSound.Play();
 

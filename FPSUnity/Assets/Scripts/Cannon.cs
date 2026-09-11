@@ -25,18 +25,19 @@ public class Cannon : MonoBehaviour
 
     void Shoot()
     {
+        //OUR SHOOT CODE
         print("Shoot");
 
-        //instantiate projectile
+        //Step 1: Instantiate/Spawn projectile prefab in projectile spawn point
         GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation);
 
-        //add forward force
-        newProjectile.GetComponent<Rigidbody>().AddForce(projectileSpawnPoint.up * shootVelocity);
+        //Step 2: Add forward force to it
+        newProjectile.GetComponent<Rigidbody>().AddForce(projectileSpawnPoint.forward * shootVelocity);
 
-        //make plunk sound effect
+        //Step 3: Make plunk SFX 
         shootSound.Play();
 
-        //despawn projectile
+        //Step 4: Despawn projectile after X seconds
         Destroy(newProjectile, 5);
     }
 }
