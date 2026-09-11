@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Zombie : MonoBehaviour
 {
     public float moveSpeed;
 
-    public float maxHeath;
+    public float maxHealth;
     float currentHeath;
 
     Transform target;
@@ -15,10 +16,12 @@ public class Zombie : MonoBehaviour
 
     public AudioSource takeDamageSound;
 
+    public Image healthBarFill;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentHeath = maxHeath;
+        currentHeath = maxHealth;
 
         target = FindObjectOfType<FPSController>().transform;
 
@@ -43,9 +46,12 @@ public class Zombie : MonoBehaviour
         currentHeath -= damageToTake;
         takeDamageSound.Play();
 
+        healthBarFill.fillAmount = currentHeath / maxHealth;
+
         if(currentHeath <= 0)
         {
             Instantiate(zombieGuts, transform.position, transform.rotation, null);
+            ZombieSpawner.Instance.countCurrentZombies();
             Destroy(gameObject);
         }
     }
