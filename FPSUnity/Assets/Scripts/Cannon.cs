@@ -29,7 +29,7 @@ public class Cannon : MonoBehaviour
 
     void Shoot()
     {
-        print("Shoot");
+        //print("Shoot");
 
         //Instantiate prefab
         GameObject newProjectile = Instantiate (projectilePrefab, projectileSpawnPoint.position, transform.rotation);
