@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Zombie : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Zombie : MonoBehaviour
     public GameObject zombieGuts;
 
     public AudioSource takeDamageSound;
+
+    public Image healthBarFill;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,6 +45,8 @@ public class Zombie : MonoBehaviour
     { 
         currentHealth -= damageToTake;
         takeDamageSound.Play();
+
+        healthBarFill.fillAmount = currentHealth / maxHealth;
 
         if (currentHealth <= 0)
         {

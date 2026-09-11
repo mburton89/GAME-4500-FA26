@@ -32,7 +32,7 @@ public class Cannon : MonoBehaviour
         GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation);
 
         //Step 2: Add forward force to it
-        newProjectile.GetComponent<Rigidbody>().AddForce(projectileSpawnPoint.forward * shootVelocity);
+        newProjectile.GetComponent<Rigidbody>().AddForce(projectileSpawnPoint.up * shootVelocity);
 
         //Step 3: Make plunk SFX 
         shootSound.Play();
