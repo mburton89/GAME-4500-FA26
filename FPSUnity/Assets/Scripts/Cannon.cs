@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-
     public float fireRate;
     public float shootVelocity;
     public GameObject projectilePrefab;
     public AudioSource shootSound;
     public Transform projectileSpawnPoint;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,7 +17,7 @@ public class Cannon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Shoot();
         }
@@ -27,20 +25,19 @@ public class Cannon : MonoBehaviour
 
     void Shoot()
     {
-        // OUR SHOOT CODE
-        print("shoot");
+        //OUR SHOOT CODE
+        print("Shoot");
 
-        //step 1: instantiate/spawn projectile prefab in projectile spawn point
+        //Step 1: Instantiate/Spawn projectile prefab in projectile spawn point
         GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation);
 
-        //step 2: add forward force to it
+        //Step 2: Add forward force to it
         newProjectile.GetComponent<Rigidbody>().AddForce(projectileSpawnPoint.forward * shootVelocity);
-        
-        //step 3: make plunk SFX
+
+        //Step 3: Make plunk SFX 
         shootSound.Play();
 
-        //step 4: Despawn projectile after x seconds
+        //Step 4: Despawn projectile after X seconds
         Destroy(newProjectile, 5);
     }
-
 }

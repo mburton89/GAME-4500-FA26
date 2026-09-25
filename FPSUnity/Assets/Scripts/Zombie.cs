@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Zombie : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Zombie : MonoBehaviour
 
     public AudioSource takeDamageSound;
 
+    public Image healthBarFill;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +28,6 @@ public class Zombie : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         agent.speed = moveSpeed;
-
     }
 
     // Update is called once per frame
@@ -34,20 +35,24 @@ public class Zombie : MonoBehaviour
     {
         ChasePlayer();
     }
+
     void ChasePlayer()
     {
         agent.destination = target.position;
     }
-    public void Takedamage(float damageToTake)
-    {
+
+    public void TakeDamage(float damageToTake)
+    { 
         currentHealth -= damageToTake;
         takeDamageSound.Play();
+
+        healthBarFill.fillAmount = currentHealth / maxHealth;
 
         if (currentHealth <= 0)
         {
             Instantiate(zombieGuts, transform.position, transform.rotation, null);
+            ZombieSpawner.Instance.CountCurrentZombies();
             Destroy(gameObject);
         }
-
     }
 }

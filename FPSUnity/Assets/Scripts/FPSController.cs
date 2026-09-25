@@ -46,10 +46,14 @@ public class FPSController : MonoBehaviour
                 print("jump");
                 verticalVelocity = jumpForce;
             }
+
+
         }
         else
         {
             verticalVelocity -= Time.deltaTime * 10.0f; // Apply gravity
+
+
         }
 
         characterController.Move(movement * Time.deltaTime);
