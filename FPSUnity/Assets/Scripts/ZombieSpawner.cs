@@ -8,7 +8,7 @@ public class ZombieSpawner : MonoBehaviour
     public static ZombieSpawner Instance;
 
     int wave;
-    public GameObject zombiePreFab;
+    public List<GameObject> zombiePreFab;
     public List<Transform> zombieSpawnPoints;
 
     public TextMeshProUGUI waveText;
@@ -29,7 +29,7 @@ public class ZombieSpawner : MonoBehaviour
         {
 
             int rand = Random.Range(0, zombieSpawnPoints.Count);
-            Instantiate(zombiePreFab, zombieSpawnPoints[rand].position, transform.rotation, transform);
+            Instantiate(zombiePreFab[rand], zombieSpawnPoints[rand].position, transform.rotation, transform);
             
         }
 
