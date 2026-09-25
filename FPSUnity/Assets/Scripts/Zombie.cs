@@ -17,6 +17,10 @@ public class Zombie : MonoBehaviour
 
     public Image healthBarFill;
 
+    public GameObject healthBarCanvas;
+
+    public Animator animator;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +31,8 @@ public class Zombie : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         agent.speed = moveSpeed;
+
+        healthBarCanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -47,11 +53,18 @@ public class Zombie : MonoBehaviour
 
         healthBarFill.fillAmount = currentHealth / maxHealth;
 
+        healthBarCanvas.gameObject.SetActive(true);
+
         if (currentHealth <= 0)
         {
             Instantiate(zombieGuts, transform.position, transform.rotation, null);
             ZombieSpawner.Instance.CountCurrentZombies();
             Destroy(gameObject);
         }
+    }
+    
+    public void Attack()
+    {
+        animator.parameters.SetValue(1, 0); // Doesn't Work
     }
 }
