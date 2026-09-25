@@ -30,6 +30,9 @@ public class Zombie : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         agent.speed = moveSpeed;
+
+        //healthBarFill.gameObject.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -45,6 +48,8 @@ public class Zombie : MonoBehaviour
 
     public void TakeDamage(float damageToTake)
     {
+        //healthBarFill.gameObject.SetActive(true);
+
         currentHealth -= damageToTake;
         takeDamageSound.Play();
 

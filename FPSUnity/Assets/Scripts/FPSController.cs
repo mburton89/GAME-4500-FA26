@@ -8,6 +8,8 @@ public class FPSController : MonoBehaviour
     public float mouseSensitivity = 2.0f;
     public float jumpForce = 5.0f;
     public Transform playerCamera;
+    public GameObject bazooka;
+    public GameObject cannon;
 
     private CharacterController characterController;
     private float verticalRotation = 0;
@@ -53,5 +55,19 @@ public class FPSController : MonoBehaviour
         }
 
         characterController.Move(movement * Time.deltaTime);
+
+        if (bazooka.gameObject.activeInHierarchy)
+        {
+            Invoke("ResetGun", 20);
+        }
     }
+
+    void ResetGun()
+    {
+        
+        cannon.gameObject.SetActive(true);
+        bazooka.gameObject.SetActive(false);
+    }
+
+
 }
