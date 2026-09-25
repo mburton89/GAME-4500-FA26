@@ -17,6 +17,8 @@ public class Zombie : MonoBehaviour
     public AudioSource takeDamageSound;
     public Image healthBarFill;
 
+    public GameObject healthBarCanvas;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,6 +28,8 @@ public class Zombie : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         agent.speed = moveSpeed;
+
+        healthBarCanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -45,6 +49,8 @@ public class Zombie : MonoBehaviour
         takeDamageSound.Play();
 
         healthBarFill.fillAmount = currentHealth / maxHealth;
+
+        healthBarCanvas.gameObject.SetActive(true);
 
         if (currentHealth <= 0)
         {
