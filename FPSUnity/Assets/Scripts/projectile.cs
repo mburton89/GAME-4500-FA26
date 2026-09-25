@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class projectile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     public float damageToGive;
 

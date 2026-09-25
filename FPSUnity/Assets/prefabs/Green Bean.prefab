@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5012943408366481943}
   - component: {fileID: 418966997180439515}
   m_Layer: 0
-  m_Name: Zombie
+  m_Name: Green Bean
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 88555024939768876}
-  - {fileID: 5563834790161863091}
   - {fileID: 8059265646171154442}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -129,7 +128,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3175300649864111013}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -210,7 +209,6 @@ MonoBehaviour:
   zombieGuts: {fileID: 8213505705448080122, guid: efb3fb891fa52d54ab26f89f9fa894e6, type: 3}
   takeDamageSound: {fileID: 6159679261462594891}
   healthBarFill: {fileID: 1599954591643634277}
-  healthBarCanvas: {fileID: 8096449201522021053}
 --- !u!195 &418966997180439515
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -540,65 +538,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1001 &8101846070837004320
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1558726112214340125}
-    m_Modifications:
-    - target: {fileID: 4420630823899535763, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.039
-      objectReference: {fileID: 0}
-    - target: {fileID: 4420630823899535763, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.944
-      objectReference: {fileID: 0}
-    - target: {fileID: 4420630823899535763, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 4420630823899535763, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4420630823899535763, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4420630823899535763, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4420630823899535763, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4420630823899535763, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4420630823899535763, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4420630823899535763, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5319225879738150431, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-      propertyPath: m_Name
-      value: Zombie Run Animation
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
---- !u!4 &5563834790161863091 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4420630823899535763, guid: f99395de83f65ed49a616e6d380da01e, type: 3}
-  m_PrefabInstance: {fileID: 8101846070837004320}
-  m_PrefabAsset: {fileID: 0}
