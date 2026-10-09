@@ -1,10 +1,13 @@
 using UnityEngine;
+using System.Collections;
+using TMPro;
 
 public class BazookaPowerup : MonoBehaviour
 {
     public GameObject bazooka;
     public GameObject cannon;
-    
+    public TextMeshProUGUI zookaText;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,18 +18,15 @@ public class BazookaPowerup : MonoBehaviour
             print("Powerup");
             cannon.gameObject.SetActive(false);
             bazooka.gameObject.SetActive(true);
+            zookaText.SetText("You Picked Up \"The Fuckin' 'Zooka\"!");
             
+
+
             Destroy(gameObject);
             
         }
+        
     }
 
-    void ResetGun()
-    {
-        // Code to run after 5 seconds
-        print("Switch guns");
-
-        cannon.gameObject.SetActive(true);
-        bazooka.gameObject.SetActive(false);
-    }
+    
 }

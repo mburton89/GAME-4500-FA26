@@ -36,6 +36,8 @@ public class Zooka : MonoBehaviour
 
     }
 
+    
+
     void Shoot()
     {
         //print("Shoot");

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FPSController : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class FPSController : MonoBehaviour
     private CharacterController characterController;
     private float verticalRotation = 0;
     private float verticalVelocity = 0;
+
+    public TextMeshProUGUI zookaText;
 
     private void Start()
     {
@@ -59,6 +62,7 @@ public class FPSController : MonoBehaviour
         if (bazooka.gameObject.activeInHierarchy)
         {
             Invoke("ResetGun", 20);
+            Invoke("ZookaTextGone", 3);
         }
     }
 
@@ -67,6 +71,11 @@ public class FPSController : MonoBehaviour
         
         cannon.gameObject.SetActive(true);
         bazooka.gameObject.SetActive(false);
+    }
+
+    void ZookaTextGone()
+    {
+        zookaText.SetText(" ");
     }
 
 

@@ -7,6 +7,7 @@ public class Zooka_Projectile : MonoBehaviour
     public GameObject explosionZone;
     public GameObject zookaProjectile;
     public GameObject explodeEffect;
+    public AudioClip explosionSound;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -15,17 +16,19 @@ public class Zooka_Projectile : MonoBehaviour
             //we've collided with a zombie
             ExplosionCollide();
             collision.gameObject.GetComponent<Zombie>().TakeDamage(giveDamage);
+            AudioSource.PlayClipAtPoint(explosionSound, transform.position);
             Destroy(zookaProjectile);
-            
+            Destroy(explosionZone, 1);
 
 
         }
+        
 
     }
     private void ExplosionCollide()
     {
-        Instantiate(explosionZone);
-        Instantiate(explodeEffect);
-
+        
+        Instantiate(explodeEffect, transform.position, transform.rotation, null);
+        
     }
 }
