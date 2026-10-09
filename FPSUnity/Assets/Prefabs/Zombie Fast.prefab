@@ -503,7 +503,9 @@ GameObject:
   - component: {fileID: 230390733542752037}
   - component: {fileID: 273812022206775254}
   - component: {fileID: 5323585267390533846}
+  - component: {fileID: 2846699209444113493}
   - component: {fileID: 4597415901747045959}
+  - component: {fileID: 3526276547265876793}
   - component: {fileID: 5519195119243407773}
   m_Layer: 0
   m_Name: Zombie Fast
@@ -612,6 +614,33 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2846699209444113493
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6067786751761946283}
+  serializedVersion: 5
+  m_Mass: 8
+  m_LinearDamping: 10
+  m_AngularDamping: 4
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &4597415901747045959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,6 +659,19 @@ MonoBehaviour:
   takeDamageSound: {fileID: 434549940723614307}
   healthBarFill: {fileID: 4961752968280043822}
   healthBarCanvas: {fileID: 8320982122917955226}
+  animator: {fileID: 0}
+--- !u!114 &3526276547265876793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6067786751761946283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fac981fb3949ca46be98ce63b69e090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KillPlayer
 --- !u!195 &5519195119243407773
 NavMeshAgent:
   m_ObjectHideFlags: 0

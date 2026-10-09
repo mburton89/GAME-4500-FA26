@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class Cannon : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class Cannon : MonoBehaviour
     public GameObject projectilePrefab;
     public AudioSource shootSound;
     public Transform projectileSpawnPoint;
+
+    public int ammo = 20;
+    public TextMeshProUGUI ammoText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +28,11 @@ public class Cannon : MonoBehaviour
 
     void Shoot()
     {
+        if (ammo <= 0)
+            return;
+        ammo--;
+        SetAmmoText();
+
         //OUT SHOOT CODE
         //print("Shoot");
 
@@ -40,4 +49,8 @@ public class Cannon : MonoBehaviour
         Destroy(newProjectile, 5);
     }
 
+    public void SetAmmoText()
+    {
+        ammoText.SetText("Ammo: " + ammo + " / 20");
+    }
 }
