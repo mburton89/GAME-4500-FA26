@@ -6,7 +6,7 @@ public class ZombieSpawner : MonoBehaviour
 {
     public static ZombieSpawner Instance;
 
-    int wave;
+    public int wave;
     public List<Transform> zombieSpawnPoints;
 
     public List<GameObject> zombiePrefabs; //RANDOM ZOMBIES
