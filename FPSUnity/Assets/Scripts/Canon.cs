@@ -3,25 +3,37 @@ using UnityEngine;
 public class Canon : MonoBehaviour
 {
     public float fireRate;
+
     public float shootVelocity;
+
     public GameObject projectileprefab;
+
     public AudioSource shootSound;
+
     public Transform projectileSpawnPoint;
+
+    public int currentAmmo;
+
+    public int maxAmmo;
+
     // Transform in 3D games tells you how 3D objects exist in your Game World
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        maxAmmo = 25;
+        currentAmmo = 20;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && currentAmmo > 0)
         {
             Shoot();
         }
+
+
     }
 
     void Shoot()
@@ -47,6 +59,14 @@ public class Canon : MonoBehaviour
 
         //Step 4: Despawn projectile after X seconds
 
-        Destroy(newProjectile, 5);
+        Destroy(newProjectile, 3);
+
+        currentAmmo--;
     }
+
+    public void TakeAmmo(int ammoToTake)
+    {
+        currentAmmo += ammoToTake;
+    }
+
 }

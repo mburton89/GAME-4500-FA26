@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3459312240067647933}
   - component: {fileID: 2163802260852086933}
   - component: {fileID: 2119443012564028753}
+  - component: {fileID: 8585904781712123659}
+  - component: {fileID: 8816371365932306431}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -132,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Zombie
   moveSpeed: 3.5
   maxHealth: 10
+  zombieTypes: []
   zombieGuts: {fileID: 7229138554548301278, guid: 68a79e9bab8b98e45870103c6389a7aa, type: 3}
   takeDamageSound: {fileID: 4140138961931976707}
   healthBarFill: {fileID: 3909727188292959312}
@@ -158,6 +161,45 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &8585904781712123659
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052373008414899626}
+  serializedVersion: 5
+  m_Mass: 8
+  m_LinearDamping: 10
+  m_AngularDamping: 4
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8816371365932306431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052373008414899626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd35270d7ed828459aa4aa2104ad07e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KillPlayer
 --- !u!1 &3065781607816881524
 GameObject:
   m_ObjectHideFlags: 0

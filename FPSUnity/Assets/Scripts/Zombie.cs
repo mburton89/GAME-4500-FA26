@@ -27,7 +27,7 @@ public class Zombie : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = maxHealth;s
 
         target = FindObjectOfType<FPSController>().transform;
 

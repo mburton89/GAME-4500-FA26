@@ -54,4 +54,5 @@ public class FPSController : MonoBehaviour
 
         characterController.Move(movement * Time.deltaTime);
     }
+
 }
