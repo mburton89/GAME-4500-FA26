@@ -27,7 +27,7 @@ public class ZombieSpawner : MonoBehaviour
         wave++;
         waveText.SetText("Wave: " + wave);
         
-        for (int i = 0; i < wave; i++)
+        for (int i = 0; i < wave + 3; i++)
         {
             int rand = UnityEngine.Random.Range(0, zombieSpawnPoints.Count);
             int randZombie = UnityEngine.Random.Range(0, zombiePrefabs.Count);

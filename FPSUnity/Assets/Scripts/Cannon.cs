@@ -25,8 +25,15 @@ public class Cannon : MonoBehaviour
 
     void Shoot()
     {
-        //OUR SHOOT CODE
-        print("Shoot");
+        if (GameManager.instance.ammo > 0)
+        {
+            GameManager.instance.ammo--;
+            GameManager.instance.ammoText.SetText("Ammo: " + GameManager.instance.ammo);
+        }
+        else return;
+
+            //OUR SHOOT CODE
+            print("Shoot");
 
         //Step 1: Instantiate/Spawn projectile prefab in projectile spawn point
         GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation);
