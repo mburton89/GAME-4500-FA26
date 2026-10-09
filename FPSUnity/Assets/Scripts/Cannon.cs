@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class Cannon : MonoBehaviour
 {
@@ -8,15 +9,22 @@ public class Cannon : MonoBehaviour
     public AudioSource shootSound;
     public Transform projectileSpawnPoint;
 
+    [SerializeField] private TextMeshProUGUI ammoText;
+    [SerializeField] private int maxAmmo = 20;
+
+    public int ammo;
+
+
     void Start()
     {
-
+        ammo = maxAmmo;
+        ammoText.text = "Ammo: " + ammo + " / " + maxAmmo;
     }
 
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && ammo > 0)
         {
             Shoot();
         }
@@ -38,6 +46,9 @@ public class Cannon : MonoBehaviour
 
         shootSound.Play();
 
+        ammo = Mathf.Clamp(ammo - 1, 0, maxAmmo);
+        ammoText.text = "Ammo: " + ammo + " / " + maxAmmo;
+        print("Ammo : " + ammo);
         // Step 4: Despawn projectile after XX seconds
 
         Destroy(newProjectile, 5);
