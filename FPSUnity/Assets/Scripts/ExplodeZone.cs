@@ -13,12 +13,13 @@ public class ExplodeZone : MonoBehaviour
         {
             //we've collided with a zombie
             collision.gameObject.GetComponent<Zombie>().TakeDamage(giveDamage);
-            Instantiate(explosionZone, transform.position, transform.rotation, null);
+            Instantiate(explosionZone, zookaProjectile.transform.position, transform.rotation, null);
             Destroy(explosionZone, 2);
 
 
         }
 
     }
+       
     
 }

@@ -10,6 +10,7 @@ public class ZombieSpawner : MonoBehaviour
     int wave;
 
     public GameObject zombiePrefab;
+    public GameObject zombiePrefab2;
 
     public List<Transform> zombieSpawnPoints;
 
@@ -27,11 +28,12 @@ public class ZombieSpawner : MonoBehaviour
 
         wave++;
         waveText.SetText("Wave: " + wave);
+        GameObject chosenPrefab = (Random.value > 0.5f) ? zombiePrefab : zombiePrefab2;
 
         for (int i = 0; i < wave; i++)
         {
             int rand = Random.Range(0, zombieSpawnPoints.Count);
-            Instantiate(zombiePrefab, zombieSpawnPoints[rand].position, transform.rotation, transform);
+            Instantiate(chosenPrefab, zombieSpawnPoints[rand].position, transform.rotation, transform);
         }
 
         

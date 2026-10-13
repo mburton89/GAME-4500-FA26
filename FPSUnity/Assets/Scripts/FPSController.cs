@@ -24,6 +24,7 @@ public class FPSController : MonoBehaviour
         Cursor.visible = false;
 
         characterController = GetComponent<CharacterController>();
+        
     }
 
     private void Update()

@@ -8,7 +8,12 @@ public class BazookaPowerup : MonoBehaviour
     public GameObject cannon;
     public TextMeshProUGUI zookaText;
 
+    private void Start()
+    {
+        cannon = FindObjectOfType<Cannon>().gameObject;
+        bazooka = FindObjectOfType<Zooka>().gameObject;
 
+    }
     private void OnTriggerEnter(Collider other)
     {
         print("Powerup");
