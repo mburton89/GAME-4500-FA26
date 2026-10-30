@@ -1,12 +1,19 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Ammo : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    public int ammoToGive = 10;
+    public AmmoSpawner parentSpawner;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponent<FPSController>())
+
+        if(other.gameObject.GetComponent<FPSController>())
         {
-            
+            GameManager.Instance.cannon.HandleAmmoPickup(ammoToGive);
+            parentSpawner.DelaySpawnAmmo();
+            Destroy(gameObject);
         }
     }
 }

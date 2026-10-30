@@ -15,12 +15,6 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     public void GameOver()
     {
         //step 1 no control step 2 blood effects step 3 game over text step 4 camera drop

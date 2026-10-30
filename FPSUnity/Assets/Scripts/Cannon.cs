@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Cannon : MonoBehaviour
 {
@@ -54,5 +55,15 @@ public class Cannon : MonoBehaviour
     public void AmmoCount()
     {
 
+    }
+    public void UpdateAmmoUI()
+    {
+        string ammoString = "Ammo: " + ammo;
+        ammoText.SetText(ammoString);
+    }
+    public void HandleAmmoPickup(int ammoToReceive)
+    {
+        ammo += ammoToReceive;
+        UpdateAmmoUI();
     }
 }
