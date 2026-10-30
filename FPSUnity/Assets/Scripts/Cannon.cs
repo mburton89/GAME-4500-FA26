@@ -10,7 +10,7 @@ public class Cannon : MonoBehaviour
     public Transform projectileSpawnPoint;
 
     [SerializeField] private TextMeshProUGUI ammoText;
-    [SerializeField] private int maxAmmo = 20;
+    public int maxAmmo = 20;
 
     public int ammo;
 
@@ -32,7 +32,6 @@ public class Cannon : MonoBehaviour
 
     void Shoot()
     {
-        print("Shoot");
 
         // Step 1: Instantiate/Spawn projectile prefab in projectile spawn point
 

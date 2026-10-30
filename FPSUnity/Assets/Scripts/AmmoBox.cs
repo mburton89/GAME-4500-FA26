@@ -1,13 +1,40 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class AmmoBox : MonoBehaviour
 {
     [SerializeField] private int gainAmount = 10;
     [SerializeField] private float respawnTime = 10f;
-    [SerializeField] private Cannon cannon;
+    private Cannon cannon;
+
+    private Collider boxCollider;
+    private Renderer boxRenderer;
 
     [SerializeField] private float rotationSpeed = 100f;
+
+    private TextMeshProUGUI ammoText;
+
+    private void Awake()
+    {
+        GameObject cannonObject = GameObject.FindGameObjectWithTag("Cannon");
+
+        if (cannonObject != null)
+        {
+            print("Got cannon");
+            cannon = cannonObject.GetComponent<Cannon>();
+        }
+
+        GameObject ammoTextObject = GameObject.Find("TMP - Ammo");
+
+        if (ammoTextObject != null)
+        {
+            ammoText = ammoTextObject.GetComponent<TextMeshProUGUI>();
+        }
+
+        boxCollider = GetComponent<Collider>();
+        boxRenderer = GetComponent<Renderer>();
+    }
 
     void Update()
     {
@@ -16,14 +43,29 @@ public class AmmoBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-       if (!other.GetComponent<FPSController>())
+
+        if (cannon.ammo >= 20)
         {
             return;
         }
 
-        cannon.ammo = Mathf.Clamp(cannon.ammo + 10, 0, 20);
-        gameObject.SetActive(false);
+        if (!other.GetComponent<FPSController>())
+        {
+            print("Not a player");
+            return;
+        }
+
+        if (cannon == null)
+        {
+            print("No cannon");
+            return;
+        }
+
+        cannon.ammo = Mathf.Clamp(cannon.ammo + gainAmount, 0, 20);
+        ammoText.text = "Ammo: " + cannon.ammo  +" / " + cannon.maxAmmo;
+
+        boxCollider.enabled = false;
+        boxRenderer.enabled = false;
 
         StartCoroutine(Reactivate(respawnTime));
     }
@@ -32,6 +74,7 @@ public class AmmoBox : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
-        gameObject.SetActive(true);
+        boxCollider.enabled = true;
+        boxRenderer.enabled = true;
     }
 }
