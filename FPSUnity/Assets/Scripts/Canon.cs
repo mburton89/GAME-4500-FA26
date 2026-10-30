@@ -21,8 +21,8 @@ public class Canon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        maxAmmo = 25;
-        currentAmmo = 20;
+        maxAmmo = 50;
+        currentAmmo = 30;
     }
 
     // Update is called once per frame
@@ -66,7 +66,14 @@ public class Canon : MonoBehaviour
 
     public void TakeAmmo(int ammoToTake)
     {
-        currentAmmo += ammoToTake;
+        if (currentAmmo < maxAmmo - 9)
+        {
+            currentAmmo += ammoToTake;
+        }
+        else
+        {
+            currentAmmo = 50;
+        }
     }
 
 }

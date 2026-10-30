@@ -4,12 +4,16 @@ public class Ammo : MonoBehaviour
 {
     public int ammoToGive;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider Collider)
     {
-        if (collision.gameObject.GetComponent<FPSController>())
+        if(Collider.gameObject.GetComponent<FPSController>())
         {
-            collision.gameObject.GetComponent<Canon>().TakeAmmo(ammoToGive);
+            Collider.gameObject.GetComponentInChildren<Canon>().TakeAmmo(ammoToGive);
+            AmmoSpawner.Instance.SpawnAmmoPickup();
+            Destroy(gameObject);
         }
+
     }
+
 
 }

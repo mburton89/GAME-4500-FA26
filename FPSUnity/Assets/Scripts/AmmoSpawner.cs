@@ -1,16 +1,27 @@
 using UnityEngine;
+using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 
 public class AmmoSpawner : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static AmmoSpawner Instance;
+
+    public List<GameObject> ammoPickupPrefabs;
+    public List<Transform> ammoSpawnPoints;
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnAmmoPickup()
     {
+        Debug.Log("SpawnAmmo");
+
+        int rand = Random.Range(0, ammoSpawnPoints.Count);
+        int randAmmo = Random.Range(0, ammoPickupPrefabs.Count);
+        Instantiate(ammoPickupPrefabs[randAmmo], ammoSpawnPoints[rand].position, transform.rotation, transform);
         
     }
 }
