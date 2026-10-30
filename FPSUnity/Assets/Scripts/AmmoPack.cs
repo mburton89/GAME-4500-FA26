@@ -1,22 +1,35 @@
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
+
 
 public class AmmoPack : MonoBehaviour
 {
-    public Cannon cannon;
+    
     public int ammoToGive = 10;
+    public AmmoSpawner parentSpawner;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<FPSController>())
         {
-            
+            GameManager.instance.cannon.HandleAmmoPickup(ammoToGive);
+            parentSpawner.DelaySpawnAmmo();
+            Destroy(gameObject);
         }
-
        
     }
 
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<FPSController>())
+        {
+            GameManager.instance.cannon.HandleAmmoPickup(ammoToGive);
+            parentSpawner.DelaySpawnAmmo();
+            Destroy(gameObject);
+        }
+    }
 
 
 

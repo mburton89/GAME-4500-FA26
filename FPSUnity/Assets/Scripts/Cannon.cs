@@ -48,7 +48,6 @@ public class Cannon : MonoBehaviour
 
             //Step 2: Add forward force to it
             newProjectile.GetComponent<Rigidbody>().AddForce(projectileSpawnPoint.forward * shootVelocity);
-
             //Step 3: Make plunk SFX
             shootSound.Play();
 
@@ -57,6 +56,12 @@ public class Cannon : MonoBehaviour
         //Step 4: Despawn projectile after x seconds
         Destroy(newProjectile, 5);
         
+    }
+
+    public void HandleAmmoPickup(int ammoToRecieve)
+    {
+        currentAmmo += ammoToRecieve;
+        UpdateAmmoUI();
     }
 
     void UpdateAmmoUI()
