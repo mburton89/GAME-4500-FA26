@@ -1,22 +1,37 @@
+
 using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-    public float fireRate;
-    public float shootVelocity;
+    [Header("Shooting")]
+    public float fireRate = 0.25f;
+    public float shootVelocity = 1000f;
     public GameObject projectilePrefab;
     public AudioSource shootSound;
     public Transform projectileSpawnPoint;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Ammunition")]
+    public int startingAmmo = 30;
+    public int maxAmmo = 60;
+    public int currentAmmo;
+
+    [Header("UI")]
+    public AmmoUI ammoUI;
+
+    private float nextFireTime = 0f;
+
     void Start()
     {
-        
+        // Set starting ammunition
+        currentAmmo = startingAmmo;
+
+        // Update ammo counter
+        UpdateAmmoUI();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Shoot when left mouse button is clicked
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
@@ -25,19 +40,72 @@ public class Cannon : MonoBehaviour
 
     void Shoot()
     {
-        //OUR SHOOT CODE
-        print("Shoot");
+        // Check if player has ammunition
+        if (currentAmmo <= 0)
+        {
+            Debug.Log("Out of Ammo!");
+            return;
+        }
 
-        //Step 1: Instantiate/Spawn projectile prefab in projectile spawn point
-        GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation);
+        // Check firing cooldown
+        if (Time.time < nextFireTime)
+        {
+            return;
+        }
 
-        //Step 2: Add forward force to it
-        newProjectile.GetComponent<Rigidbody>().AddForce(projectileSpawnPoint.forward * shootVelocity);
+        // Set next allowed firing time
+        nextFireTime = Time.time + fireRate;
 
-        //Step 3: Make plunk SFX 
-        shootSound.Play();
+        // Spawn projectile at the spawn point
+        GameObject newProjectile = Instantiate(
+            projectilePrefab,
+            projectileSpawnPoint.position,
+            projectileSpawnPoint.rotation
+        );
 
-        //Step 4: Despawn projectile after X seconds
-        Destroy(newProjectile, 5);
+        // Add forward force to projectile
+        newProjectile.GetComponent<Rigidbody>().AddForce(
+            projectileSpawnPoint.forward * shootVelocity
+        );
+
+        // Play shooting sound
+        if (shootSound != null)
+        {
+            shootSound.Play();
+        }
+
+        // Remove one bullet
+        currentAmmo--;
+
+        // Update ammo counter
+        UpdateAmmoUI();
+
+        // Destroy projectile after 5 seconds
+        Destroy(newProjectile, 5f);
+
+        Debug.Log("Ammo remaining: " + currentAmmo);
+    }
+
+    // Add ammunition when player collects a pickup
+    public void AddAmmo(int amount)
+    {
+        currentAmmo += amount;
+
+        // Prevent ammo from exceeding maximum
+        currentAmmo = Mathf.Clamp(currentAmmo, 0, maxAmmo);
+
+        // Update ammo counter
+        UpdateAmmoUI();
+
+        Debug.Log("Ammo collected! Current ammo: " + currentAmmo);
+    }
+
+    // Update ammunition display
+    void UpdateAmmoUI()
+    {
+        if (ammoUI != null)
+        {
+            ammoUI.UpdateAmmo(currentAmmo, maxAmmo);
+        }
     }
 }
