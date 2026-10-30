@@ -1150,6 +1150,9 @@ MonoBehaviour:
   projectilePreFab: {fileID: 3834593511578308286, guid: d97654af9a5d7994787232b09a5df72a, type: 3}
   shootSound: {fileID: 353043292}
   projectileSpawnPoint: {fileID: 1776283960}
+  startingAmmo: 0
+  currentAmmo: 0
+  ammoText: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
