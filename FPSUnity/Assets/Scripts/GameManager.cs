@@ -37,4 +37,18 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene(currentSceneIndex);
     }
+
+    public void FillAmmo(int ammoFillAmount)
+    {
+        cannon.ammo += ammoFillAmount;
+        if (cannon.ammo > 20)
+            cannon.ammo = 20;
+        cannon.SetAmmoText();
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+        // Scene 1 is main game
+    }
 }

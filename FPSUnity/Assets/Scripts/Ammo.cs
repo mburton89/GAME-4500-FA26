@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour
 {
+    public int ammoFillAmount;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<FPSController>())
         {
-            AmmoSpawner.Instance.FillAmmo();
-            Destroy(gameObject);
+            PickUpAmmo();
         }
     }
 
@@ -15,8 +16,18 @@ public class Ammo : MonoBehaviour
     {
         if (other.gameObject.GetComponent<FPSController>())
         {
-            AmmoSpawner.Instance.FillAmmo();
-            Destroy(gameObject);
+            PickUpAmmo();
         }
+    }
+
+    private void PickUpAmmo()
+    {
+        GameManager.Instance.FillAmmo(ammoFillAmount);
+
+        //Individual spawn timers
+        Transform spawnPoint = transform.parent;
+        AmmoSpawner.Instance.RespawnAmmo(spawnPoint);
+
+        Destroy(gameObject);
     }
 }

@@ -12,23 +12,58 @@ public class AmmoSpawner : MonoBehaviour
     public float ammoSpawnDelay;
     public int ammoFillAmount;
     public Cannon cannon;
-
+    /*
     private void Awake()
     {
         Instance = this;
     }
-
+    */
     private void Start()
     {
-        StartCoroutine(AmmoSpawnTimer());
+        // Use for a glocal 10 second Ammo Respawn Timer
+        //StartCoroutine(AmmoSpawnTimer());
+        
+        //Individual spawn timers
+        SpawnAmmo();
     }
 
+    //Individual spawn timers
+    private void SpawnAmmo()
+    {
+        foreach (Transform spawnPoint in AmmoSpawnPoints)
+        {
+            if (spawnPoint.childCount == 0)
+            {
+                Instantiate(AmmoPrefab, spawnPoint);
+            }
+        }
+    }
+
+    //Individual spawn timers
+    public void RespawnAmmo(Transform spawnPoint)
+    {
+        StartCoroutine(AmmoRespawnTimer(spawnPoint));
+    }
+
+    //Individual spawn timers
+    private IEnumerator AmmoRespawnTimer(Transform spawnPoint)
+    {
+        yield return new WaitForSeconds(ammoSpawnDelay);
+
+        if (spawnPoint != null && spawnPoint.childCount == 0)
+        {
+            Instantiate(AmmoPrefab, spawnPoint);
+        }
+    }
+
+    /*
+     * Use these for a global 10 seconds Ammo Spawn Timer
     private IEnumerator AmmoSpawnTimer()
     {
         while (true)
         {
             yield return new WaitForSeconds(ammoSpawnDelay);
-
+            Debug.Log("Ammo Spawn Atempt");
             SpawnAmmo();
         }
     }
@@ -43,12 +78,5 @@ public class AmmoSpawner : MonoBehaviour
             }
         }
     }
-
-    public void FillAmmo()
-    {
-        cannon.ammo += ammoFillAmount;
-        if (cannon.ammo > 20)
-            cannon.ammo = 20;
-        cannon.SetAmmoText();
-    }
+    */
 }
