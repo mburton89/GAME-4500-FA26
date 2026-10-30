@@ -1,7 +1,7 @@
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using TMPro;
 
-public class Cannon: MonoBehaviour
+public class Cannon : MonoBehaviour
 {
     public float fireRate;
     public float shootVelocity;
@@ -9,43 +9,56 @@ public class Cannon: MonoBehaviour
     public AudioSource shootSound;
     public Transform projectileSpawnPoint;
 
+    public int startingAmmo;
+    public int currentAmmo;
+    public TextMeshProUGUI ammoText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && currentAmmo > 0)
         {
             Shoot();
         }
-
-
     }
-
 
     void Shoot()
     {
-        //OURSHOOTCODE
+        //OUR SHOOT CODE
         print("Shoot");
 
-        //Step 1:Instantiate/Spawn projectile prefab in projectile spawn point
+        //Step 1: Instantiate/Spawn projectile prefab in projectile spawn point
         GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation);
 
-        //Step 2: Add forward force to it 
+        //Step 2: Add forward force to it
         newProjectile.GetComponent<Rigidbody>().AddForce(projectileSpawnPoint.forward * shootVelocity);
 
-        //Step 3: Make plunk SFX
+        //Step 3: Make plunk SFX 
         shootSound.Play();
 
         //Step 4: Despawn projectile after X seconds
         Destroy(newProjectile, 5);
 
+        currentAmmo--;
 
+        UpdateAmmoUI();
     }
 
+    public void UpdateAmmoUI()
+    {
+        string ammoString = "Ammo: " + currentAmmo;
+        ammoText.SetText(ammoString);
+    }
 
+    public void HandleAmmoPickup(int numberOfAmmo)
+    {
+        currentAmmo += numberOfAmmo;
+        UpdateAmmoUI();
+    }
 }
