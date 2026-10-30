@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmmoPickup
   ammoToGive: 10
   parentSpawner: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 451ef5f28f9f69b43b6f22b4451985ee, type: 3}
 --- !u!114 &8410838861248908189
 MonoBehaviour:
   m_ObjectHideFlags: 0

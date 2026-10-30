@@ -6,7 +6,7 @@ public class AmmoPickup : MonoBehaviour
 {
     public int ammoToGive = 10;
     public AmmoSpawner parentSpawner;
-    
+    public AudioClip soundEffect;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -14,6 +14,7 @@ public class AmmoPickup : MonoBehaviour
         {
             GameManager.Instance.cannon.HandleAmmoPickup(ammoToGive);
             parentSpawner.DelaySpawnAmmo();
+            SoundManager.instance.PlayPowerupSound();
             Destroy(gameObject);
         }
     }
@@ -24,6 +25,7 @@ public class AmmoPickup : MonoBehaviour
         {
             GameManager.Instance.cannon.HandleAmmoPickup(ammoToGive);
             parentSpawner.DelaySpawnAmmo();
+            SoundManager.instance.PlayPowerupSound();
             Destroy(gameObject);
         }
     }
