@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Zombie
   moveSpeed: 0.5
-  maxHealth: 7
+  maxHealth: 3
   zombieGuts: {fileID: 1499757284832879171, guid: 9dd85e0e8ffe31248817badcee281e36, type: 3}
   takeDamageSound: {fileID: 3390919220197419074}
   healthBarFill: {fileID: 9176906066084096221}

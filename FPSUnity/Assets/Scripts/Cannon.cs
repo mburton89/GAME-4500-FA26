@@ -8,6 +8,8 @@ public class Cannon : MonoBehaviour
     public AudioSource shootSound;
     public Transform projectileSpawnPoint;
 
+    public int ammo = 20;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,10 +27,10 @@ public class Cannon : MonoBehaviour
 
     void Shoot()
     {
-        if (GameManager.instance.ammo > 0)
+        if (ammo > 0)
         {
-            GameManager.instance.ammo--;
-            GameManager.instance.ammoText.SetText("Ammo: " + GameManager.instance.ammo);
+            ammo--;
+            UpdateAmmoUI();
         }
         else return;
 
@@ -46,5 +48,10 @@ public class Cannon : MonoBehaviour
 
         //Step 4: Despawn projectile after X seconds
         Destroy(newProjectile, 5);
+    }
+
+    public void UpdateAmmoUI()
+    {
+        GameManager.instance.ammoText.SetText("Ammo: " + ammo);
     }
 }

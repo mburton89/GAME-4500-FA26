@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2642766540076388235}
   - component: {fileID: 9213148676494335336}
   - component: {fileID: 3337417213526132691}
+  - component: {fileID: 7976718291085103632}
   m_Layer: 0
   m_Name: AmmoBox
   m_TagString: Untagged
@@ -152,3 +153,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba105a83581913449901cd527a730079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GetAmmo
+--- !u!114 &7976718291085103632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6164302124313205351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c939bff0959b664ea6a29411188a80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatAndSpin

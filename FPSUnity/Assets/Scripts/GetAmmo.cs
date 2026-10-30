@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class GetAmmo : MonoBehaviour
 {
+    public int ammoToGive = 7;
+
     private async Task OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<FPSController>())
         {
-            GameManager.instance.ammo += 10;
-            GameManager.instance.ammoText.SetText("Ammo: " + GameManager.instance.ammo);
+            GameManager.instance.cannon.ammo += ammoToGive;
+            GameManager.instance.cannon.UpdateAmmoUI();
             gameObject.SetActive(false);
             await Task.Delay(30000);
             gameObject.SetActive(true);
@@ -19,8 +21,8 @@ public class GetAmmo : MonoBehaviour
     {
         if (other.gameObject.GetComponent<FPSController>())
         {
-            GameManager.instance.ammo += 10;
-            GameManager.instance.ammoText.SetText("Ammo: " + GameManager.instance.ammo);
+            GameManager.instance.cannon.ammo += ammoToGive;
+            GameManager.instance.cannon.UpdateAmmoUI();
             gameObject.SetActive(false);
             await Task.Delay(30000);
             gameObject.SetActive(true);

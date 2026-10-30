@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOverOverlay;
 
-    public int ammo = 20;
     public TextMeshProUGUI ammoText;
 
     private void Awake()
