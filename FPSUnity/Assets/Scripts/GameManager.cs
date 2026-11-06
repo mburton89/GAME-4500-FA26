@@ -51,4 +51,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(1);
         // Scene 1 is main game
     }
+
+    public void SwitchToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
