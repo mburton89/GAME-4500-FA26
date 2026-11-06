@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class Cannon : MonoBehaviour
 {
@@ -7,6 +8,10 @@ public class Cannon : MonoBehaviour
     public GameObject projectilePrefab;
     public AudioSource shootSound;
     public Transform projectileSpawnPoint;
+
+    public int startingAmmo;
+    public int currentAmmo;
+    public TextMeshProUGUI ammoText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +22,7 @@ public class Cannon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && currentAmmo > 0)
         {
             Shoot();
         }
@@ -39,5 +44,21 @@ public class Cannon : MonoBehaviour
 
         //Step 4: Despawn projectile after X seconds
         Destroy(newProjectile, 5);
+
+        currentAmmo--;
+
+        UpdateAmmoUI();
+    }
+
+    public void UpdateAmmoUI()
+    {
+        string ammoString = "Ammo: " + currentAmmo;
+        ammoText.SetText(ammoString);
+    }
+
+    public void HandleAmmoPickup(int numberOfAmmo)
+    {
+        currentAmmo += numberOfAmmo;
+        UpdateAmmoUI();
     }
 }
