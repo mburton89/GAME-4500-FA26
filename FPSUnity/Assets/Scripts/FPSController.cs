@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class FPSController : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
+    float oringinalMoveSpeed;
     public float mouseSensitivity = 2.0f;
     public float jumpForce = 5.0f;
     public Transform playerCamera;
@@ -13,12 +15,33 @@ public class FPSController : MonoBehaviour
     private float verticalRotation = 0;
     private float verticalVelocity = 0;
 
+    public void ActivateSpeedBoost(float duration)
+    {
+        StartCoroutine(SpeedBoostCoroutine(duration));
+    }
+
+    private IEnumerator SpeedBoostCoroutine(float duration)
+    {
+        //increase speed
+        moveSpeed = oringinalMoveSpeed * 2;
+
+        //wait for duration
+        yield return new WaitForSeconds(duration);
+
+        //set speed back to oringinal speed
+        moveSpeed = oringinalMoveSpeed;
+
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         characterController = GetComponent<CharacterController>();
+
+        oringinalMoveSpeed = moveSpeed;
+
     }
 
     private void Update()
