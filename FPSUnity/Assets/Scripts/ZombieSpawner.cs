@@ -1,8 +1,6 @@
-using NUnit.Framework;
-using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
-using JetBrains.Annotations;
+using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour
 {
@@ -13,17 +11,18 @@ public class ZombieSpawner : MonoBehaviour
     public GameObject zombiePrefab;
     public List<Transform> zombieSpawnPoints;
 
-    public List<GameObject> zombiePrefabs; 
+    public List<GameObject> zombiePrefabs;
 
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI highestWaveText;
 
     private void Awake()
     {
         Instance = this;
         wave = 1;
-        waveText.SetText("Wave: " + wave);
-
+        highestWaveText.SetText("Best:" + PlayerPrefs.GetInt("HighestWave"));
     }
+
 
     public void SpawnWaveOfZombies()
     {
@@ -31,6 +30,13 @@ public class ZombieSpawner : MonoBehaviour
 
         wave++;
         waveText.SetText("Wave: " + wave);
+
+        if(wave > PlayerPrefs.GetInt("HighestWave"))
+        {
+            //YAY NEW HIGHSCORE
+            PlayerPrefs.SetInt("HighestWave", wave);
+            highestWaveText.SetText("Best:" + PlayerPrefs.GetInt("HighestWave"));
+        }
 
         for (int i = 0; i < wave; i++)
         {
@@ -47,7 +53,7 @@ public class ZombieSpawner : MonoBehaviour
     {
         Zombie[] allzombiesInScene = FindObjectsByType<Zombie>(FindObjectsSortMode.None);
 
-        if(allzombiesInScene.Length ==1)
+        if (allzombiesInScene.Length == 1)
         {
             SpawnWaveOfZombies();
         }
