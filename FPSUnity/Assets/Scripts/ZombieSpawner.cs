@@ -11,11 +11,13 @@ public class ZombieSpawner : MonoBehaviour
     public List<Transform> ZombieSpawnPoints;
 
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI highestWaveText;
 
     private void Awake()
     {
         Instance = this;
         wave = 1;
+        highestWaveText.SetText("Best: " + PlayerPrefs.GetInt("BestWave"));
     }
 
     public void SpawnWaveOfZombies()
@@ -24,6 +26,13 @@ public class ZombieSpawner : MonoBehaviour
 
         wave++;
         waveText.SetText("Wave: " + wave);
+
+        if (wave > PlayerPrefs.GetInt("BestWave"))
+        {
+            //Yay new high score!
+            PlayerPrefs.SetInt("BestWave", wave);
+            highestWaveText.SetText("Best: " + PlayerPrefs.GetInt("BestWave"));
+        }
 
         for (int i = 0; i < wave; i++)
         {

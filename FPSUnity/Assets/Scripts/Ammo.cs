@@ -23,7 +23,7 @@ public class Ammo : MonoBehaviour
     private void PickUpAmmo()
     {
         GameManager.Instance.FillAmmo(ammoFillAmount);
-
+        
         //Individual spawn timers
         Transform spawnPoint = transform.parent;
         AmmoSpawner.Instance.RespawnAmmo(spawnPoint);

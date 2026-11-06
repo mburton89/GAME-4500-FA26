@@ -12,12 +12,12 @@ public class AmmoSpawner : MonoBehaviour
     public float ammoSpawnDelay;
     public int ammoFillAmount;
     public Cannon cannon;
-    /*
+    
     private void Awake()
     {
         Instance = this;
     }
-    */
+    
     private void Start()
     {
         // Use for a glocal 10 second Ammo Respawn Timer
