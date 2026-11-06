@@ -8,18 +8,29 @@ public class GameManager : MonoBehaviour
     public FPSController fpsController;
     public Canon canon;
 
+
     public GameObject gameOverOverlay;
+    public GameObject inventoryOverlay;
+
+    bool isPaused;
+
+    public Button buttonToAutoSelect;
+
     // Make it easier to talk to class and get access to methods
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
     }
 
     private void Awake()
@@ -49,6 +60,38 @@ public class GameManager : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void PauseGame ()
+    {
+        isPaused = true;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        inventoryOverlay.SetActive(true);
+
+        fpsController.enabled = false;
+        canon.enabled = false;
+
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame ()
+    {
+        isPaused = false;
+        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        inventoryOverlay.SetActive(false);
+
+        fpsController.enabled = true;
+        canon.enabled = true;
+
+        buttonToAutoSelect.Select();
+
+        Time.timeScale = 1;
     }
 
    

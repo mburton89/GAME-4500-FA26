@@ -21,7 +21,7 @@ public class Canon : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        maxAmmo = 50;
+        maxAmmo = 80;
         currentAmmo = 30;
     }
 
@@ -72,7 +72,7 @@ public class Canon : MonoBehaviour
         }
         else
         {
-            currentAmmo = 50;
+            currentAmmo = 80;
         }
     }
 
