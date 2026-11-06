@@ -11,8 +11,13 @@ public class GameManager : MonoBehaviour
     public Cannon cannon;
 
     public GameObject gameOverOverlay;
+    public GameObject inventoryOverlay;
 
     public TextMeshProUGUI ammoText;
+
+    public bool isPaused;
+
+    public Button buttonToAutoSelect;
 
     private void Awake()
     {
@@ -20,9 +25,19 @@ public class GameManager : MonoBehaviour
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
     }
 
     public void GameOver()
@@ -47,5 +62,33 @@ public class GameManager : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    void PauseGame()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        inventoryOverlay.SetActive(true);
+        fpsController.enabled = false;
+        cannon.enabled = false;
+
+        buttonToAutoSelect.Select();
+
+        Time.timeScale = 0;
+        isPaused = true;
+    }
+
+    public void ResumeGame()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        inventoryOverlay.SetActive(false);
+        fpsController.enabled = true;
+        cannon.enabled = true;
+
+        Time.timeScale = 1;
+        isPaused = false;
     }
 }
