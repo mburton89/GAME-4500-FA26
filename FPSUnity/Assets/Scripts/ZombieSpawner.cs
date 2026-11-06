@@ -12,6 +12,7 @@ public class ZombieSpawner : MonoBehaviour
     public List<GameObject> zombiePrefabs; //RANDOM ZOMBIES
 
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI highestWaveText;
 
     private void Awake()
     {

@@ -10,10 +10,29 @@ public class GameManager : MonoBehaviour
     public Cannon cannon;
 
     public GameObject gameOverOverlay;
+    public GameObject inventoryOverOverlay;
+    public Button buttonToAutoSelect;
+
+    bool gameIsPaused;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gameIsPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
     }
 
     public void GameOver()
@@ -40,6 +59,27 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
     }
 
+    public void PauseGame()
+    {
+        gameIsPaused = true;
+        Cursor.visible = true;
+        fpsController.enabled = false;
+        cannon.enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        inventoryOverOverlay.SetActive(true);
+        buttonToAutoSelect.Select();
+        Time.timeScale = 0;
+    }
 
+    public void ResumeGame()
+    {
+        gameIsPaused = false;
+        Cursor.visible = false;
+        fpsController.enabled = true;
+        cannon.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        inventoryOverOverlay.SetActive(false);
+        Time.timeScale = 1;
+    }
 
 }

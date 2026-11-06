@@ -5,6 +5,7 @@ using UnityEngine;
 public class FPSController : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
+    float originalMoveSpeed;
     public float mouseSensitivity = 2.0f;
     public float jumpForce = 5.0f;
     public Transform playerCamera;
@@ -19,6 +20,8 @@ public class FPSController : MonoBehaviour
         Cursor.visible = false;
 
         characterController = GetComponent<CharacterController>();
+
+        originalMoveSpeed = moveSpeed;
     }
 
     private void Update()
@@ -57,5 +60,19 @@ public class FPSController : MonoBehaviour
         }
 
         characterController.Move(movement * Time.deltaTime);
+    }
+
+    public void ActivateSpeedBoost(float duration)
+    {
+        StartCoroutine(SpeedBoostRoutine(duration));
+    }
+
+    private IEnumerator SpeedBoostRoutine(float duration)
+    {
+        moveSpeed = originalMoveSpeed * 1.5f; // 50% faster (change this value if you want)
+
+        yield return new WaitForSeconds(duration);
+
+        moveSpeed = originalMoveSpeed; // return to normal speed
     }
 }
